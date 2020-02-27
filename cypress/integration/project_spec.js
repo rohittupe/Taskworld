@@ -10,12 +10,17 @@ describe('Task World Suite', function() {
 
     beforeEach(function() {
         cy.fixture('userdata.json').then(userdata => {
-            this.user1 = userdata['testuser']
-            cy.visit(Cypress.env(this.user1.app_instance))
-            cy.contains('Log In')
-            loginPage.getEmailAddress().type(this.user1.email);
-            loginPage.getPassword().type(this.user1.password)
-            loginPage.getLogIn().click()
+            //Store first user data in user1 variable
+            this.user1 = userdata['testuser'] 
+
+            //Visit AUT and Verify if login page is open or not
+            cy.visit(Cypress.env(this.user1.app_instance)) 
+            cy.contains('Log In') 
+
+            //Enter login details email address & password. Then Click on login button and verify user workspace loaded or not
+            loginPage.getEmailAddress().type(this.user1.email)
+            loginPage.getPassword().type(this.user1.password) 
+            loginPage.getLogIn().click() 
             cy.wait(2000)
             cy.url().should('contain', this.user1.workspace)
             cy.wait(2000)
@@ -29,11 +34,6 @@ describe('Task World Suite', function() {
         const projName = this.user1.project_name+'_'+timestamp
         const taskListName = this.user1.tasklist_name+'_'+timestamp
         const taskName = this.user1.task_name+'_'+timestamp
-
-        //console.log('timestamp='+timestamp)
-        //console.log('projName='+projName)
-        //console.log('taskListName='+taskListName)
-        //console.log('taskName='+taskName)   
         
         // Create a new project
         dashboardPage.getNewProjectLink().click()

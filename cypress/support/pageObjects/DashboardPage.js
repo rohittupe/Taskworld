@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 class DashboardPage{
 
+    //User menu icon
     getUserMenuIcon(){
         return cy.get('.ax-user-menu-button')
     }
@@ -50,26 +51,33 @@ class DashboardPage{
         return cy.get('.ax-tasklist-header__add-icon')
     }
 
+    //Task field
     getNewTaskField(){
         return cy.get('textarea.ax-task-input-panel__input-box')
     }
     
+    //Task title
     getCreatedTask(taskName){
         return cy.get('.ax-task-header__title')
     }
     
+    //Task panel
     getTaskPanel(){
         return cy.get('.ax-floating-panel')
     }
 
+    //Tasl panel close button
     getCloseTaskPanel(){
         return cy.get('.ax-floating-panel-close')
     }
 
+    //Task checkbox
     getCreatedTaskCheckbox(){
         return cy.get('.ax-task-checkbox')
     }
 
+    //---Signout---
+    //Signout link
     getSignout(){
         return cy.get('.ax-user-profile-card__sign-out')      
     }
