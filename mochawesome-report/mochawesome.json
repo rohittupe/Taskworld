@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2020-02-27T04:35:27.038Z",
+    "end": "2020-02-27T04:36:20.784Z",
+    "duration": 53746,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "8539f371-245c-4825-a5a5-a7d298f6128b",
+      "title": "",
+      "fullFile": "cypress\\integration\\project_spec.js",
+      "file": "cypress\\integration\\project_spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d3dee4de-cc7c-4cbb-a879-1e44b1ea3bb2",
+          "title": "Task World Suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Test to create project, tasklist, task, and mark the task as completed",
+              "fullTitle": "Task World Suite Test to create project, tasklist, task, and mark the task as completed",
+              "timedOut": null,
+              "duration": 48592,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//Appending timestamp to project, tasklist name and task name  \nvar timestamp = new Date().getTime();\nvar projName = this.user1.project_name + '_' + timestamp;\nvar taskListName = this.user1.tasklist_name + '_' + timestamp;\nvar taskName = this.user1.task_name + '_' + timestamp; //console.log('timestamp='+timestamp)\n//console.log('projName='+projName)\n//console.log('taskListName='+taskListName)\n//console.log('taskName='+taskName)   \n// Create a new project\ndashboardPage.getNewProjectLink().click();\ncy.wait(1000);\ndashboardPage.getProjectName().type(projName);\ndashboardPage.getProjectDescription().type(this.user1.project_desc);\nif (this.user1.project_privacy.toLowerCase() == 'public') {\n  dashboardPage.getProjectPrivacyPublic().click();\n} else {\n  dashboardPage.getProjectPrivacyPrivate().click();\n}\ndashboardPage.getChooseTemplateButton().click();\ndashboardPage.getCreateProjectButton().click();\ncy.contains(projName); //Create a new task list under the project\ncy.contains(projName).click();\ndashboardPage.getTaskListTitle().type(taskListName);\ndashboardPage.getTaskListTitle().type('{enter}'); // Add a task under the newly created tasklist\ndashboardPage.getAddTaskDetail().click({\n  force: true\n});\ncy.wait(100);\ndashboardPage.getNewTaskField().type(taskName);\ndashboardPage.getNewTaskField().type('{enter}');\ncy.contains(taskName).click({\n  force: true\n}); // Mark the task as completed\ncy.wait(100);\ndashboardPage.getCreatedTaskCheckbox().click({\n  force: true\n}); // Verify task status is completed\ncy.contains('Completed'); // Opens the completed task to see its details\ncy.contains(taskName).click({\n  force: true\n});\ncy.wait(500);\ndashboardPage.getTaskPanel().should('not.have.class', '--hidden');\ndashboardPage.getCloseTaskPanel().click({\n  force: true\n});\ndashboardPage.getTaskPanel().should('have.class', '--hidden');",
+              "err": {},
+              "uuid": "3453937a-4d60-42be-82b7-9f868ed4b59f",
+              "parentUUID": "d3dee4de-cc7c-4cbb-a879-1e44b1ea3bb2",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "3453937a-4d60-42be-82b7-9f868ed4b59f"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 48592,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "6.1.4"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "5.0.0"
+    },
+    "marge": {
+      "options": {
+        "reporterEnabled": "mochawesome",
+        "mochawesomeReporterOptions": {
+          "reportDir": "cypress/reports/mocha",
+          "quite": true,
+          "overwrite": false,
+          "html": true,
+          "json": true
+        }
+      },
+      "version": "4.1.0"
+    }
+  }
+}

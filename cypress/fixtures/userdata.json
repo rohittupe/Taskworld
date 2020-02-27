@@ -1,0 +1,13 @@
+{
+  "testuser": {
+    "app_instance": "northamerica_url",
+    "email": "rohitautomationuser@gmail.com",
+    "password": "RohitTester@123",
+    "workspace": "rohittester",
+    "project_name": "Sample Project",
+    "project_desc": "This project created for testing",
+    "project_privacy": "private",
+    "tasklist_name": "Sample tasklist",
+    "task_name": "This is a task"
+  }
+}
